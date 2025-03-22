@@ -1,3 +1,6 @@
+## Link: 
+## Autores: Nestor Tabares, Felipe Abella
+
 [![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/pKOlJAgR)
 # Taller en Parejas: Creación de un Endpoint con Express.js
 
@@ -18,8 +21,8 @@ El objeto JSON que debe retornar cada endpoint debe tener la siguiente estructur
 
 ```json
 {
-  "name": "Nombre del estudiante",
-  "lastName": "Apellido del estudiante",
+  "name": "Nombre(s) del estudiante",
+  "lastNames": "Apellidos del estudiante",
   "email": "Correo del estudiante",
   "id": "ID de la universidad"
 }
@@ -31,6 +34,50 @@ El objeto JSON que debe retornar cada endpoint debe tener la siguiente estructur
 - Definir los endpoints para obtener datade los usuarios i.e `GET /user-info/1` y `GET /user-info/2` según la cantidad de integrantes del equipo, **es importante que NO queme en el código estos IDs, sino que genere un único endpoint que reciba como parámetro el ID de los estudiantes y con base en él retorne la información. OJO, valide las entradas.**
 - Configurar el servidor para que escuche en el puerto `3000` o cualquier otro de tu elección.
 - Asegurarse de que el servidor esté funcionando correctamente y que cada endpoint retorne el JSON adecuado.
+
+## Esquema del Endpoint
+GET /user_info/:id
+
+### Parámetros:
+
+id (número): ID del usuario a consultar (1 o 2).
+
+### Respuestas:
+
+- 200 - Éxito
+Cuando el usuario existe, devuelve un objeto JSON con su información.
+Ejemplo de respuesta para /user_info/1:
+
+{
+  "name": "Felipe",
+  "lastNames": "Abella Ballesteros",
+  "email": "felipeabba@unisabana.edu.co",
+  "id": "0000291513"
+}
+
+- 400 - Error de formato
+Si el parámetro id no es un número válido.
+Ejemplo de respuesta:
+
+{
+  "error": "Invalid ID format, must be a number."
+}
+
+- 404 - No encontrado
+Si el usuario con el id solicitado no existe.
+Ejemplo de respuesta:
+
+{
+  "error": "Student not found"
+}
+
+- 500 - Error del servidor
+Si ocurre un problema interno en el servidor.
+Ejemplo de respuesta:
+
+{
+  "error": "Internal server error"
+}
 
 ### Instrucciones de uso
 
