@@ -16,9 +16,9 @@ const students_data = [
     },
     {
         id: 2,
-        name: "",
-        lastNames: "",
-        email: ""
+        name: "Nestor Andres",
+        lastNames: "Tabares David",
+        email: "nestortada@unsiabana.edu.co"
     }
 ];
 
