@@ -9,36 +9,38 @@ app.use(cors());
 // Students data stored in an array
 const students_data = [
     {
-        id: 1,
+        student: 1,
         name: "Felipe",
         lastNames: "Abella Ballesteros",
-        email: "felipeabba@unisabana.edu.co"
+        email: "felipeabba@unisabana.edu.co",
+        id: 291513
     },
     {
-        id: 2,
+        student: 2,
         name: "Nestor Andres",
         lastNames: "Tabares David",
-        email: "nestortada@unsiabana.edu.co"
+        email: "nestortada@unsiabana.edu.co",
+        id: 287880
     }
 ];
 
 // Default endpoint
 app.get('/', (req, res) => {
-    res.json({ message: "You are in the server. Add /user_info/id for more information about a student" });
+    res.json({ message: "You are in the server. Add /user_info/student for more information about a student" });
 });
 
-// User info endpoint
-app.get('/user_info/:id', (req, res) => {
+// Student info endpoint
+app.get('/user_info/:student', (req, res) => {
     try {
-        const id = parseInt(req.params.id, 10); // Convert ID to number
+        const student = parseInt(req.params.student, 10); // Convert student to number
 
-        // Validate that ID is a number
-        if (isNaN(id)) {
-            return res.status(400).json({ error: "Invalid ID format, must be a number." });
+        // Validate that student is a number
+        if (isNaN(student)) {
+            return res.status(400).json({ error: "Invalid student format, must be a number." });
         }
 
         // Search for the student in the array
-        const selected_student = students_data.find(student => student.id === id);
+        const selected_student = students_data.find(s => s.student === student);
 
         if (selected_student) {
             res.json(selected_student);
